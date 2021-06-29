@@ -1,0 +1,15 @@
+.link-style a {
+    padding-left: 30px;
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 20px;
+}
+.link-style a:hover {
+    color: orangered;
+}
+.link-style1 a {
+    color: black !important;
+}
+.header {
+    padding-bottom: 40px;
+}
