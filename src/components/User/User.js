@@ -9,16 +9,17 @@ function User() {
       let result = await fetch("http://localhost:8000/api/users");
       result = await result.json();
       setAllUsers(result);
-      setSearchUser(result);
     }
     getAllUser();
   }, []);
 
+  // all the state
   const [allUsers, setAllUsers] = useState([]);
   const [searchUser, setSearchUser] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPerPage] = useState(3);
+
   //getting value from local storage
   useEffect(() => {
     const perPage = JSON.parse(localStorage.getItem("perPage"));
@@ -31,12 +32,12 @@ function User() {
 
   useEffect(() => {
     setSearchUser(search(allUsers));
-  }, [searchQuery]);
+  }, [searchQuery, allUsers]);
 
   function changeHandler(e) {
     setCurrentPage(1);
-    setSearchQuery(e.target.value);
-    localStorage.setItem("query", JSON.stringify(e.target.value));
+    setSearchQuery(e.target.value.toLowerCase());
+    localStorage.setItem("query", JSON.stringify(e.target.value.toLowerCase()));
   }
   function pageChangeHandler(e) {
     localStorage.setItem("perPage", JSON.stringify(e.target.value));
@@ -55,13 +56,15 @@ function User() {
 
   //for pagination
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(allUsers.length / usersPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(searchUser.length / usersPerPage); i++) {
     pageNumbers.push(i);
   }
+
   const perPage = [];
   for (let i = 1; i <= allUsers.length; i++) {
     perPage.push(i);
   }
+
   function paginate(pageNumber) {
     localStorage.setItem("page", JSON.stringify(pageNumber));
     setCurrentPage(pageNumber);
