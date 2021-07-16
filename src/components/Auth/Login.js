@@ -25,6 +25,7 @@ function Login() {
       },
     });
     result = await result.json();
+    
     if (result.error) {
       alert(result.error);
     } else {

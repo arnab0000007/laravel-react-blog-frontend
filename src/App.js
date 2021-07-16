@@ -12,7 +12,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserContextProvider from "./contexts/userContext";
 import PostContextProvider from "./contexts/postContext";
 import UserProfile from "./components/User/UserProfile";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
 function App() {
@@ -20,38 +20,31 @@ function App() {
     <div className="App">
       <UserContextProvider>
         <PostContextProvider>
-          <BrowserRouter>
+          <BrowserRouter >
             <Header />
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/login" component={Login}></Route>
               <Route exact path="/register" component={Register}></Route>
-              <ProtectedRoute
-                exact
-                path="/profile"
-                comp={Profile}
-              ></ProtectedRoute>
-              <ProtectedRoute exact path="/user" comp={User}></ProtectedRoute>
-              <ProtectedRoute
-                exact
-                path="/user/profile/:id"
-                comp={UserProfile}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                exact
-                path="/add/post"
-                comp={AddPost}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                exact
-                path="/update/post/:id"
-                comp={UpdatePost}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                exact
-                path="/single/post/:id"
-                comp={SinglePost}
-              ></ProtectedRoute>
+
+              <ProtectedRoute exact path="/profile">
+                <Profile />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/user">
+                <User />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/user/profile/:id">
+                <UserProfile />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/add/post">
+                <AddPost />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/update/post/:id">
+                <UpdatePost />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/single/post/:id">
+                <SinglePost />
+              </ProtectedRoute>
               <Route path="*" component={() => "404 NOT FOUND"} />
             </Switch>
           </BrowserRouter>

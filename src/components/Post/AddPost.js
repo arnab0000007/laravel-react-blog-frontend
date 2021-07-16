@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 
 function AddPost() {
-    const {  loggedInUser } = useContext(UserContext);
+    const { loggedInUser } = useContext(UserContext);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
  

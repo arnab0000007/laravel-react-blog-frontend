@@ -106,7 +106,6 @@ function User() {
           {currUser(searchUser).map((row) => (
             <tr key={row.id}>
               <td>
-                {" "}
                 <Link to={`/user/profile/${row.id}`}>{row.name}</Link>{" "}
               </td>
               <td>{row.email}</td>
