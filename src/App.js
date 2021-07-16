@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import Header from "./components/Partials/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login";
@@ -14,7 +14,7 @@ import PostContextProvider from "./contexts/postContext";
 import UserProfile from "./components/User/UserProfile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import "./App.css";
-export const Context = createContext();
+
 function App() {
   return (
     <div className="App">
@@ -31,11 +31,7 @@ function App() {
                 path="/profile"
                 comp={Profile}
               ></ProtectedRoute>
-              <ProtectedRoute
-                exact
-                path="/user"
-                comp={User}
-              ></ProtectedRoute>
+              <ProtectedRoute exact path="/user" comp={User}></ProtectedRoute>
               <ProtectedRoute
                 exact
                 path="/user/profile/:id"
