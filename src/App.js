@@ -29,32 +29,32 @@ function App() {
               <ProtectedRoute
                 exact
                 path="/profile"
-                component={Profile}
+                comp={Profile}
               ></ProtectedRoute>
               <ProtectedRoute
                 exact
                 path="/user"
-                component={User}
+                comp={User}
               ></ProtectedRoute>
               <ProtectedRoute
                 exact
                 path="/user/profile/:id"
-                component={UserProfile}
+                comp={UserProfile}
               ></ProtectedRoute>
               <ProtectedRoute
                 exact
                 path="/add/post"
-                component={AddPost}
+                comp={AddPost}
               ></ProtectedRoute>
               <ProtectedRoute
                 exact
                 path="/update/post/:id"
-                component={UpdatePost}
+                comp={UpdatePost}
               ></ProtectedRoute>
               <ProtectedRoute
                 exact
                 path="/single/post/:id"
-                component={SinglePost}
+                comp={SinglePost}
               ></ProtectedRoute>
               <Route path="*" component={() => "404 NOT FOUND"} />
             </Switch>
